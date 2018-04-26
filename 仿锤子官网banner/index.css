@@ -1,0 +1,45 @@
+/* ------------------------------ *\
+   RESET 
+\* ------------------------------ */
+
+
+*{
+	box-sizing: border-box;
+}
+
+html, body{
+	margin: 0;
+	padding: 0;
+	perspective: 600px;
+}
+
+
+
+
+
+/* ------------------------------ *\
+   BANNER
+\* ------------------------------ */
+
+
+.banner{
+	width: 100%;
+	padding: 30px;
+	transform-style: preserve-3d;
+}
+
+	.banner-content{
+		overflow: hidden;
+		width: 1200px;
+		height: 675px;
+		margin: 0 auto;
+		background-color: #fff;
+		border-radius: 10px;
+		transform-origin: center center;
+	}
+	
+		.banner-content > img{
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
