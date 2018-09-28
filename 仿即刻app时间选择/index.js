@@ -92,7 +92,7 @@ class datePicker{
 				
 				_this.createNewDaySelectBox();
 				
-				_this.reRenderDaySelect( value, _this.month, _this.day )
+				_this.renderDaySelect( value, _this.month, _this.day )
 				
 				_this.showDaySelecyBox();
 				
