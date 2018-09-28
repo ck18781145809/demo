@@ -88,14 +88,14 @@ class datePicker{
 			position: 'static',
 			showBottom: false,
 			change: function(value, date, endDate){
+				_this.year  = date.year;
 				_this.yearValueWrite( value );
-				
 				_this.createNewDaySelectBox();
-				
 				_this.renderDaySelect( value, _this.month, _this.day )
-				
 				_this.showDaySelecyBox();
 				
+				/* 当前时间 */
+				console.log( _this.year, _this.month, _this.day )
 			}
 		});
 	}
@@ -115,6 +115,9 @@ class datePicker{
 				_this.year  = date.year;
 				_this.month = date.month;
 				_this.day   = date.date;
+				
+				/* 当前时间 */
+				console.log( _this.year, _this.month, _this.day )
 			}
 		});
 	}
