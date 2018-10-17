@@ -9,6 +9,39 @@ html, body{
 	padding: 0;
 }
 
+html {
+	font-size: 16px;
+}
+
+@media screen and (min-width: 375px) {
+	html {
+		/* iPhone6的375px尺寸作为16px基准，414px正好18px大小, 600 20px */
+		font-size: calc(100% + 2 * (100vw - 375px) / 39);
+		font-size: calc(16px + 2 * (100vw - 375px) / 39);
+	}
+}
+@media screen and (min-width: 414px) {
+	html {
+		/* 414px-600px每100像素宽字体增加1px(18px-22px) */
+		font-size: calc(112.5% + 4 * (100vw - 414px) / 586);
+		font-size: calc(18px + 4 * (100vw - 414px) / 586);
+	}
+}
+@media screen and (min-width: 600px) {
+	html {
+		/* 600px-1000px每100像素宽字体增加1px(20px-24px) */
+		font-size: calc(125% + 4 * (100vw - 600px) / 400);
+		font-size: calc(20px + 4 * (100vw - 600px) / 400);
+	}
+}
+@media screen and (min-width: 1000px) {
+	html {
+		/* 1000px往后是每100像素0.5px增加 */
+		font-size: calc(137.5% + 6 * (100vw - 1000px) / 1000);
+		font-size: calc(22px + 6 * (100vw - 1000px) / 1000);
+	}
+}
+
 .hide{
 	display: none;
 }
@@ -27,13 +60,13 @@ html, body{
 }
 
 .layui-laydate-content tr{
-	height: 10vw !important;
+	height: 2.34375rem !important;
 }
 
 .layui-laydate-content td, .layui-laydate-content th{
 	padding: 0 !important;
-	width: 10vw !important;
-	height: 10vw !important;
+	width: 2.34375rem !important;
+	height: 2.34375rem !important;
 }
 
 
@@ -57,8 +90,8 @@ html, body{
 
 	.datePicker-header{
 		overflow: hidden;
-		height: 21.33vw;
-		padding: 4.1vw 4.83vw;
+		/*height: 21.33vw;*/
+		padding: 1.125rem 0.9375rem;
 		color: #fff;
 		background: #5FB878;
 		box-sizing: border-box;
@@ -71,28 +104,32 @@ html, body{
 		}
 		
 		.datePicker-header > p.datePicker-show-year{
-			font-size: 3.38vw;
+			font-size: 0.75rem;
 		}
 		
 		.datePicker-header > p.datePicker-show-day{
-			margin-top: 1.44vw;
-			font-size: 6.28vw;
+			margin-top: 0.3125rem;
+			font-size: 1.5rem;
 		}
 	
 	
 	.datePicker-footer{
-		padding: 4.83vw;
+		padding: 1.125rem;
+		padding-top: 0;
 		text-align: right;
 	}
 	
 		.datePicker-footer > a{
-			margin: 0 2.41vw;
+			margin: 0 0.5625rem;
+			font-size: 0.875rem;
 			color: #009688;
 			text-decoration: none;
 		}
 	
 	
-	.datePicker-content{}
+	.datePicker-content{
+		height: 20.75rem;
+	}
 	
 		.datePicker-content-select{
 			width: 100%;
@@ -114,11 +151,11 @@ html, body{
 					}
 					
 					.datePicker-content-select .layui-laydate-header i.laydate-prev-m{
-						left: 7.24vw;
+						left: 1.685rem;
 					}
 					
 					.datePicker-content-select .layui-laydate-header i.laydate-next-m{
-						right: 7.24vw;
+						right: 1.685rem;
 					}
 					
 					.datePicker-content-select .layui-laydate-content table{
