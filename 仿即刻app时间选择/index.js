@@ -5,13 +5,8 @@
  */
 class datePicker{
 	constructor() {
-		this.daySelectBox      = document.querySelector( '.datePicker-content-day-select' ), //  日期选择面板
-		this.yearSelectBox     = document.querySelector( '.datePicker-content-year-select' ), //  年份选择面板
-		this.dayValue          = document.querySelector('.datePicker-show-day'), //  日期显示框
-		this.yearValue         = document.querySelector('.datePicker-show-year'), //  年份显示框
-		this.datePickerContent = document.querySelector( '.datePicker-content' ), //  显示面板容器
-		this.year, //  时间状态
-		this.month, //  月份状态
+		this.year; //  时间状态
+		this.month; //  月份状态
 		this.day; //  日期状态
 	}
 	
@@ -95,7 +90,7 @@ class datePicker{
 				_this.showDaySelecyBox();
 				
 				/* 当前时间 */
-				console.log( _this.year, _this.month, _this.day )
+				// console.log( _this.year, _this.month, _this.day )
 			}
 		});
 	}
@@ -117,7 +112,7 @@ class datePicker{
 				_this.day   = date.date;
 				
 				/* 当前时间 */
-				console.log( _this.year, _this.month, _this.day )
+				// console.log( _this.year, _this.month, _this.day )
 			}
 		});
 	}
@@ -137,32 +132,131 @@ class datePicker{
 	}
 	
 	/*
+	 * 渲染组件HTML
+	 * */
+	renderHTML() {
+		
+		let that = this;
+	
+		let _datePickerHeader = document.createElement( 'div' );
+			_datePickerHeader.className = 'datePicker-header';
+		let _datePickerShowYear = document.createElement( 'p' );
+			_datePickerShowYear.className = 'datePicker-show-year';
+		let _datePickerShowDay = document.createElement( 'p' );
+			_datePickerShowDay.className = 'datePicker-show-day';
+		
+		this.dayValue  = _datePickerShowDay;
+		this.yearValue = _datePickerShowYear;
+		
+		_datePickerHeader.appendChild( _datePickerShowYear );
+		_datePickerHeader.appendChild( _datePickerShowDay );
+		
+		
+		let _datePickerContent = document.createElement( 'div' );
+			_datePickerContent.className = 'datePicker-content';
+		let _datePickerContentDaySelect = document.createElement( 'div' );
+			_datePickerContentDaySelect.className = 'datePicker-content-select datePicker-content-day-select';
+		let _datePickerContentYearSelect = document.createElement( 'div' );
+			_datePickerContentYearSelect.className = 'datePicker-content-select datePicker-content-year-select hide';
+		
+		this.datePickerContent = _datePickerContent;
+		this.daySelectBox      = _datePickerContentDaySelect;
+		this.yearSelectBox     = _datePickerContentYearSelect;
+		
+		_datePickerContent.appendChild( _datePickerContentDaySelect );
+		_datePickerContent.appendChild( _datePickerContentYearSelect );
+		
+		
+		let _datePickerFooter = document.createElement( 'div' );
+			_datePickerFooter.className = 'datePicker-footer';
+		let _datePickerFooterCancel = document.createElement( 'a' );
+			_datePickerFooterCancel.innerText = '取消';
+			_datePickerFooterCancel.onclick = function( ) {
+				that.cancelHandler();
+			};
+		let _datePickerFooterConfirm = document.createElement( 'a' );
+			_datePickerFooterConfirm.innerText = '确定';
+			_datePickerFooterConfirm.onclick = function(  ) {
+				that.confirmHandler();
+			};
+		
+		_datePickerFooter.append( _datePickerFooterCancel );
+		_datePickerFooter.append( _datePickerFooterConfirm );
+		
+		let _datePicker = document.createElement( 'div' );
+			_datePicker.className = 'datePicker';
+			
+		this.datePicker = _datePicker;
+		
+		_datePicker.appendChild( _datePickerHeader );
+		_datePicker.appendChild( _datePickerContent );
+		_datePicker.appendChild( _datePickerFooter );
+		
+		document.body.appendChild( _datePicker );
+		
+	}
+	
+	/*
+	 * 组件确定点击事件
+	 * */
+	confirmHandler() {
+		
+		this.targetElement.value = this.year + '-' + this.month + '-' + this.day;
+		this.datePicker.classList.add( 'hide' );
+		
+	}
+	
+	/*
+	 * 组件确定点击事件
+	 * */
+	cancelHandler(  ) {
+		
+		this.datePicker.classList.add( 'hide' );
+		
+	}
+	
+	/*
 	 * 初始化
 	 * */
-	init() {
-		/*
-		 * 显示内容初始赋值
-		 * */
-		var initDate = new Date();
+	init( ele ) {
 		
-		this.renderYearSelect();
-		this.renderDaySelect( initDate.getFullYear(), ( initDate.getMonth() + 1 ), initDate.getDate() );
+		let that = this;
 		
-		/*
-		 * 初始赋值
-		 * */
-		this.year = initDate.getFullYear();
-		this.month = initDate.getMonth() + 1;
-		this.day = initDate.getDate();
+		this.targetElement = document.querySelector( ele );
+		this.targetElement.addEventListener( 'click', function(  ) {
+			if( that.datePicker ) {
+				
+				that.datePicker.classList.remove( 'hide' )
+				
+			} else {
+				
+				that.renderHTML();
+				
+				/*
+				 * 显示内容初始赋值
+				 * */
+				let initDate = new Date();
+				
+				that.renderYearSelect();
+				that.renderDaySelect( initDate.getFullYear(), ( initDate.getMonth() + 1 ), initDate.getDate() );
+				
+				/*
+				 * 初始赋值
+				 * */
+				that.year = initDate.getFullYear();
+				that.month = initDate.getMonth() + 1;
+				that.day = initDate.getDate();
+				
+				that.dayValueWrite( that.year, that.month, that.day );
+				
+				/*
+				 * 初始化点击事件
+				 * */
+				that.yearValueClick();
+				that.dayValueClick();
+				
+			}
+		} );
 		
-		this.dayValueWrite( this.year, this.month, this.day );
-		
-		/*
-		 * 初始化点击事件
-		 * */
-		this.yearValueClick();
-		this.dayValueClick();
 	}
 }
-
-new datePicker().init();
