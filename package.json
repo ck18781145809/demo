@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/ck18781145809/demo/issues"
   },
-  "homepage": "https://github.com/ck18781145809/demo#readme"
+  "homepage": "https://github.com/ck18781145809/demo#readme",
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "del": "^3.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.1"
+  }
 }
