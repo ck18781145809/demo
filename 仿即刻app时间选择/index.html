@@ -8,11 +8,23 @@
 		<link rel="stylesheet" href="index.css" />
 	</head>
 	<body>
-	<input type="text" id="date1">
+		<div class="datePicker">
+			<div class="datePicker-header">
+				<p class="datePicker-show-year">1994</p>
+				<p class="datePicker-show-day">6月3日</p>
+			</div>
+			
+			<div class="datePicker-content">
+				<div class="datePicker-content-select datePicker-content-day-select"></div>
+				<div class="datePicker-content-select datePicker-content-year-select hide"></div>
+			</div>
+			
+			<div class="datePicker-footer">
+				<a href="javascript: void(0)">取消</a>
+				<a href="javascript: void(0)">确认</a>
+			</div>
+		</div>
 		<script type="text/javascript" src="laydate/laydate.js" ></script>
 		<script type="text/javascript" src="index.js" ></script>
-	<script>
-		new datePicker().init( '#date1' );
-	</script>
 	</body>
 </html>
