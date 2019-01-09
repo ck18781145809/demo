@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			html,body{
+				height: 100%;
+				background-color: gainsboro;
+			}
+			
+			.stage{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				perspective: 600px;
+			}
+			
+			.box{
+				position: relative;
+				width: 300px;
+				height: 300px;
+				transform-style: preserve-3d;
+			}
+			
+			.face{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 300px;
+				height: 300px;
+				background: #007AFF;
+				/*opacity: 0.5;*/
+				backface-visibility: visible;
+				/*transform: translateY(200px);*/
+			}
+			
+				.face.front{
+					transform: translateZ(150px);
+				}
+				
+				.face.back{
+					transform: translateZ(-150px);
+					background-color: #FF7300;
+				}
+				
+				.face.left{
+					transform: rotateY(90deg) translateZ(-150px);
+					background-color: #089B04;
+				}
+				
+				.face.right{
+					transform: rotateY(90deg) translateZ(150px);
+					background-color: #FF0000;
+				}
+				
+				.face.top{
+					transform: rotateX(90deg) translateZ(150px);
+					background-color: purple;
+				}
+				
+				.face.bottom{
+					transform: rotateX(90deg) translateZ(-150px);
+					background-color: yellow;
+				}
+				
+			.nobody{
+				animation-name: nobody;
+				animation-duration: 9s;
+				animation-timing-function: ease-in-out;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+			}
+				
+			@keyframes nobody{
+				0%, 100%{
+					transform: rotateX(0) rotateY(0);
+				}
+				16.5% {
+				    transform: rotateX( -90deg );
+				}
+				33% {
+				    transform: rotateX( 90deg );
+				}
+				49.5% {
+				    transform: rotateY( 90deg );
+				}
+				66% {
+				    transform: rotateY( -90deg );
+				}
+				82.5% {
+				    transform: rotateX( 180deg );
+				}
+			
+		</style>
+	</head>
+	<body>
+		<div class="stage">
+			<div class="box nobody">
+				<div class="face front"></div>
+				<div class="face back"></div>
+				<div class="face left"></div>
+				<div class="face right"></div>
+				<div class="face top"></div>
+				<div class="face bottom"></div>
+			</div>			
+		</div>
+	</body>
+</html>
