@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.wrapper{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate( -50%, -50% );
+			}
+			
+				.row{
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					border-radius: 50%;
+					clip-path: inset(0 0 50% 0);
+					border-width: 5px;
+					border-style: solid;
+					animation-duration: 3s;
+					animation-iteration-count: infinite;
+					animation-timing-function: cubic-bezier(.25,0,.25,1);
+				}
+				
+					.row:nth-child(1){
+						width: 40px;
+						height: 40px;
+						margin-left: -25px;
+						margin-top: -25px;
+						border-color: #1674bd;
+						transform: rotate( 60deg );
+						animation-name: r1;
+						
+					}
+					
+					@keyframes r1{
+						to{
+							transform: rotate( 420deg );
+						}
+					}
+					
+					.row:nth-child(2){
+						width: 60px;
+						height: 60px;
+						margin-left: -35px;
+						margin-top: -35px;
+						border-color: #00a397;
+						transform: rotate( 100deg );
+						animation-name: r2;
+						
+					}
+					
+					@keyframes r2{
+						50%{
+							transform: rotate( -40deg );
+						}
+						100%{
+							transform: rotate( 100deg );
+						}
+					}
+					
+					.row:nth-child(3){
+						width: 80px;
+						height: 80px;
+						margin-left: -45px;
+						margin-top: -45px;
+						border-color: #83c740;
+						transform: rotate( 140deg );
+						animation-name: r3;
+						
+					}
+					
+					@keyframes r3{
+						to{
+							transform: rotate( 1220deg );
+						}
+					}
+					
+					.row:nth-child(4){
+						width: 100px;
+						height: 100px;
+						margin-left: -55px;
+						margin-top: -55px;
+						border-color: #f5b52e;
+						transform: rotate( 180deg );
+						animation-name: r4;
+						
+					}
+					
+					@keyframes r4{
+						to{
+							transform: rotate( -1260deg );
+						}
+					}
+					
+					.row:nth-child(5){
+						width: 120px;
+						height: 120px;
+						margin-left: -65px;
+						margin-top: -65px;
+						border-color: #f25c35;
+						transform: rotate( 220deg );
+						animation-name: r5;
+						
+					}
+					
+					@keyframes r5{
+						to{
+							transform: rotate( 2020deg );
+						}
+					}
+					
+					.row:nth-child(6){
+						width: 140px;
+						height: 140px;
+						margin-left: -75px;
+						margin-top: -75px;
+						border-color: #c32287;
+						transform: rotate( 260deg );
+						animation-name: r6;
+						
+					}
+					
+					@keyframes r6{
+						to{
+							transform: rotate( -1900deg );
+						}
+					}
+					
+					.row:nth-child(7){
+						width: 160px;
+						height: 160px;
+						margin-left: -85px;
+						margin-top: -85px;
+						border-color: #8040b9;
+						transform: rotate( 300deg );
+						animation-name: r7;
+						
+					}
+					
+					@keyframes r7{
+						to{
+							transform: rotate( 2820deg );
+						}
+					}
+					
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="row"></div>
+			<div class="row"></div>
+			<div class="row"></div>
+			<div class="row"></div>
+			<div class="row"></div>
+			<div class="row"></div>
+			<div class="row"></div>
+		</div>
+	</body>
+</html>
