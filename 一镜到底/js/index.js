@@ -65,8 +65,8 @@ class Allroad {
 					}, {
 					  delay: 0.7,
 					  duration: 0.3,
-					  from: { y: window.innerHeight * 0.5 },
-					  to: { y: window.innerHeight * 1.2 }
+					  from: { y: window.innerHeight * 0.5, alpha: 1 },
+					  to: { y: window.innerHeight * 1.2, alpha: 1 }
 					}
 				]
 			}
