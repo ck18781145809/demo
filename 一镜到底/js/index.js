@@ -81,12 +81,20 @@ class Allroad {
 		
 	}
 	
+	/**
+	 * 初始化
+	 */
 	init( PIXI, TweenlineMax, TimelineMax ) {
 		
 		this.pixiInit( PIXI );
 		
+		this.initTouch();
+		
 	}
 	
+	/**
+	 * 初始化PIXI
+	 */
 	pixiInit( ) {
 		
 		let app = new PIXI.Application();
@@ -95,15 +103,12 @@ class Allroad {
 		
 		this.pixiRendererHandler( app );
 		
-		this.pixiApp = app;
-		
 		this.pixiSpriteInit( app );
 		
 		this.pixiTextInit( app )
 		
-		this.initTouch();
+		this.pixiApp = app;
 		
-		// this.pixiGirlInit();
 	}
 	
 	/**
@@ -134,8 +139,7 @@ class Allroad {
 		app.loader.add( [ ...imagesArr.aniArr, ...imagesArr.girlArr, ...imagesArr.itemArr ] ).load( function() {
 			
 			let ani = that.spriteCreator( app, imagesArr.aniArr[0], window.innerWidth, window.innerWidth * 1376 / 750, 0.5, 0.5, window.innerWidth / 2, window.innerHeight / 2, 1 );
-			let girl = that.spriteCreator( app, imagesArr.girlArr[0], window.innerWidth * 0.936, window.innerWidth * 0.936 * 1376 / 750, 0.5, 0.5, window.innerWidth / 2, -200, 0 );
-			// let girl = that.spriteCreator( app, imagesArr.girlArr[0], window.innerWidth, window.innerWidth * 1376 / 750, 0.5, 0.5, window.innerWidth / 2, window.innerHeight / 2, 0 );
+			let girl = that.spriteCreator( app, imagesArr.girlArr[0], window.innerWidth * 0.936, window.innerWidth * 0.936 * 1376 / 750, 0.5, 0.5, window.innerWidth / 2, 0, 0 );
 			
 			imagesArr.itemArr.forEach( function( img, index ) {
 				
@@ -367,7 +371,10 @@ class Allroad {
 		} )
 		
 	}
-	
+
+	/**
+	 * 初始化滑动事件
+	 */
 	initTouch() {
 		
 		let that = this;
