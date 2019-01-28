@@ -64,12 +64,6 @@ class Allroad {
 					  to: { y: window.innerHeight * 0.5, alpha: 1 }
 					}, 
 					{
-					  delay: 0.2,
-					  duration: 1,
-					  from: { alpha: 1 },
-					  to: { alpha: 1 }
-					}, 
-					{
 					  delay: 0.7,
 					  duration: 0.3,
 					  from: { y: window.innerHeight * 0.5 },
@@ -139,7 +133,7 @@ class Allroad {
 		app.loader.add( [ ...imagesArr.aniArr, ...imagesArr.girlArr, ...imagesArr.itemArr ] ).load( function() {
 			
 			let ani = that.spriteCreator( app, imagesArr.aniArr[0], window.innerWidth, window.innerWidth * 1376 / 750, 0.5, 0.5, window.innerWidth / 2, window.innerHeight / 2, 1 );
-			let girl = that.spriteCreator( app, imagesArr.girlArr[0], window.innerWidth * 0.936, window.innerWidth * 0.936 * 1376 / 750, 0.5, 0.5, window.innerWidth / 2, 0, 0 );
+			let girl = that.spriteCreator( app, imagesArr.girlArr[0], window.innerWidth * 0.936, window.innerWidth * 0.936 * 1376 / 750, 0.5, 0.5, window.innerWidth / 2, window.innerHeight / 2, 0 );
 			
 			imagesArr.itemArr.forEach( function( img, index ) {
 				
@@ -170,8 +164,8 @@ class Allroad {
 				
 			} )
 			
-			that.ani = ani;
-			that.girl = girl;
+			that['ani'] = ani;
+			that['girl'] = girl;
 			
 			that.animateHandler( app );
 			
@@ -338,9 +332,9 @@ class Allroad {
 					
 				} else if( item.from && item.to ){
 					
-					let tm = TweenMax.fromTo( that[currentObjKey], item.duration, item.from, item.to )
+					// let tm = TweenMax.fromTo( that[currentObjKey], item.duration, item.from, item.to )
 					
-					tl.add( tm, delay );
+					tl.add( TweenMax.fromTo( that[currentObjKey], item.duration, item.from, item.to ), delay );
 					
 					$( document.body ).on( 'progress', function( e, v ) {
 						
@@ -352,9 +346,9 @@ class Allroad {
 					
 				} else if( item.to ) {
 					
-					let tm = TweenMax.to( that[currentObjKey], item.duration, item.to )
+					// let tm = TweenMax.to( that[currentObjKey], item.duration, item.to )
 					
-					tl.add( tm, delay );
+					tl.add( TweenMax.to( that[currentObjKey], item.duration, item.to ), delay );
 					
 					$( document.body ).on( 'progress', function( e, v ) {
 						
