@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<style type="text/css">
-			div{
+			div.upload-box{
 				height: 200px;
 				background-color: lightgrey;
 				line-height: 200px;
@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		
-		<div id="inputZone">
+		<div id="inputZone" class="upload-box">
 			input上传
 		</div>
 
@@ -27,9 +27,7 @@
 		<script>
 			( function( doc ) {
 				
-				let _inputZone = doc.querySelector( '#inputZone' ),
-					_inputZoneShowBase64 = doc.querySelector( '#inputZoneShowBase64' ),
-					base64, blob;
+				let base64, blob;
 
 				doc.querySelector( '#inputZone' ).addEventListener( 'click', function( e ) {
 					
@@ -77,22 +75,20 @@
 		
 		<hr />
 		
-		<div class="dropZone">
+		<div id="dropZone" class="upload-box">
 			拖拽上传
 		</div>
 		
 		<script type="text/javascript">
 			( function( doc ) {
 				
-				var _dropZone = doc.querySelector( '.dropZone' );
-				
-				_dropZone.addEventListener( 'dragover', function( e ) {
+				doc.querySelector( '#dropZone' )addEventListener( 'dragover', function( e ) {
 					
 					event.preventDefault()
 					
 				} );
 				
-				_dropZone.addEventListener( 'drop', function( e ) {
+				doc.querySelector( '#dropZone' ).addEventListener( 'drop', function( e ) {
 					
 					event.preventDefault();
 
