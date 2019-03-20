@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				height: 200px;
+				background-color: lightgrey;
+				line-height: 200px;
+				text-align: center;
+				color: gray;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div id="inputZone">
+			input上传
+		</div>
+
+		<button id="inputZoneShowBase64">显示base64</button>
+		<button id="inputZoneShowBlob">显示Blob</button>
+		<br>
+		<img class="inputZonePreview">
+		
+		<script>
+			( function( doc ) {
+				
+				let _inputZone = doc.querySelector( '#inputZone' ),
+					_inputZoneShowBase64 = doc.querySelector( '#inputZoneShowBase64' ),
+					base64, blob;
+
+				doc.querySelector( '#inputZone' ).addEventListener( 'click', function( e ) {
+					
+					let input = document.createElement('input');
+				    input.setAttribute('type', 'file');
+				    input.setAttribute('accept', 'image/*');
+				    
+				    input.onchange = function( e ) {
+				    	
+				    	let file = e.target.files[0];
+
+					    let frBase64 = new FileReader();
+					    frBase64.onload = function() {
+						    base64 = frBase64.result;
+						    doc.querySelector( '.inputZonePreview' ).setAttribute( 'src', base64 );
+					    };
+					    frBase64.readAsDataURL( file );
+
+					    let frBlob = new FileReader();
+					    frBlob.onload = function() {
+						    blob = frBlob.result;
+					    };
+					    frBlob.readAsBinaryString( file );
+
+				    };
+				    
+				    input.click();
+					
+				} );
+
+				doc.querySelector( '#inputZoneShowBase64' ).addEventListener( 'click', function( ) {
+
+					alert( base64 );
+
+				} );
+
+				doc.querySelector( '#inputZoneShowBlob' ).addEventListener( 'click', function( ) {
+
+					alert( blob );
+
+				} );
+
+			} )( document )
+		</script>
+		
+		<hr />
+		
+		<div class="dropZone">
+			拖拽上传
+		</div>
+		
+		<script type="text/javascript">
+			( function( doc ) {
+				
+				var _dropZone = doc.querySelector( '.dropZone' );
+				
+				_dropZone.addEventListener( 'dragover', function( e ) {
+					
+					event.preventDefault()
+					
+				} );
+				
+				_dropZone.addEventListener( 'drop', function( e ) {
+					
+					event.preventDefault();
+
+    				let files =  event.dataTransfer.files[0];
+
+    				let fr = new FileReader();
+                    fr.onload = function() {
+                        let src = fr.result;
+                        doc.querySelector( '.imgRender > img' ).setAttribute( 'src', src );
+                    };
+                    fr.readAsDataURL( files );
+    				
+				} )
+				
+			} )( document )
+		</script>
+		
+		<span class="imgRender">
+			<img src=""/>
+		</span>
+		
+	</body>
+</html>

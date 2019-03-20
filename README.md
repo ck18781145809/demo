@@ -15,3 +15,6 @@ demo存放
 [时钟和计时器](https://ck18781145809.github.io/demo/时钟和计时器/clock.html)
 
 ![](https://ck18781145809.github.io/demo/readme-img/clock&timer.png)
+
+[图片上传预览](https://ck18781145809.github.io/demo/图片上传预览/upload-preview.html)
+
