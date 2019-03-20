@@ -1,0 +1,103 @@
+ul, li{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.clock{
+	color: #fff;
+	font-size: 240px;
+}
+
+	.clock:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+	.clock-item{
+		position: relative;
+		float: left;
+		width: 200px;
+		margin: 0 20px;
+		perspective: 800px;
+	}
+
+		.clock-top{
+			overflow: hidden;
+			height: 150px;
+			line-height: 300px;
+			text-align: center;
+			background-color: #3f3f3f;
+		}
+
+		.clock-middle{
+			position: absolute;
+			top: 150px;
+			z-index: 999;
+			width: 100%;
+			height: 150px;
+			line-height: 300px;
+			text-align: center;
+			transform-style:preserve-3d;
+			transform: rotateX( 180deg );
+			transform-origin: center top;
+			perspective: 800px;
+		}
+
+		.clock-down{
+			animation-name: down;
+			animation-fill-mode: forwards;
+			animation-timing-function: cubic-bezier(0,0,1,0);
+			/*animation-timing-function: ease-in;*/
+		}
+
+		@keyframes down{
+			to{
+				top: 155px;
+				transform: rotateX( 0 );
+			}
+		}
+
+			.clock-middle-bottom{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #3f3f3f;
+				transform: translateZ(1px);
+			}
+
+				.clock-middle-bottom > span{
+					display: block;
+					height: 100%;
+					line-height: 0;
+					overflow: hidden;
+				}
+
+			.clock-middle-top{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: #3f3f3f;
+				transform: rotateX( 180deg ) translateZ(-1px);
+			}
+
+				.clock-middle-top > span{
+					display: block;
+					height: 100%;
+					line-height: 300px;
+					overflow: hidden;
+				}
+
+		.clock-bottom{
+			overflow: hidden;
+			height: 150px;
+			margin-top: 5px;
+			line-height: 0;
+			text-align: center;
+			background-color: #3f3f3f;
+		}

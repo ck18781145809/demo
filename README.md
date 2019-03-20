@@ -12,3 +12,7 @@ demo存放
 [loading圈圈](https://ck18781145809.github.io/demo/loading/loading.html)
 
 [一镜到底](https://ck18781145809.github.io/demo/一镜到底/index.html)
+
+[时钟和计时器](https://ck18781145809.github.io/demo/时钟和计时器/clock.html)
+
+![](https://ck18781145809.github.io/demo/readme-img/clock&timer.png)

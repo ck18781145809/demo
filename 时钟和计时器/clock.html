@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" href="clock.css">
+	</head>
+	<body>
+
+		<ul id="clock1" class="clock"></ul>
+		<br>
+		<ul id="clock2" class="clock"></ul>
+
+		<script type="text/javascript" src="./clock.js"></script>
+		<script>
+
+			var clock1 = new Clock( '#clock1' );
+			clock1.init();
+			clock1.running();
+
+			var clock2 = new Clock( '#clock2' );
+			clock2.init( {
+				duration: 2000,
+				animateDuration: 1000,
+				timer: {
+					number: 1000
+				}
+			} );
+			clock2.running();
+
+		</script>
+	</body>
+</html>
