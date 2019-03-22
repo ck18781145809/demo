@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+	<title>Title</title>
+	<style>
+		.tab{
+			position: relative;
+			display: flex;
+		}
+
+			.tab > div{
+				padding: 0 20px;
+			}
+
+			.tab > .mark{
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: -5px;
+				width: 20px;
+				height: 5px;
+				margin-left: -10px;
+				border-radius: 10px;
+				background: #1E88A8;
+			}
+
+		.swiper-container {
+			margin-top: 40px;
+			width: 100%;
+			height: 500px;
+		}
+
+	</style>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.css">
+</head>
+<body>
+
+	<section class="tab">
+		<div>电影</div>
+		<div>电视剧</div>
+		<div>本地生活</div>
+		<div>体育</div>
+		<span class="mark"></span>
+	</section>
+
+	<section class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">电影</div>
+			<div class="swiper-slide">电视剧</div>
+			<div class="swiper-slide">本地生活</div>
+			<div class="swiper-slide">体育</div>
+		</div>
+	</section>
+
+	<script type="text/javascript" src="./TweenMax.min.js"> </script>
+	<script type="text/javascript" src="./TimelineMax.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.js"></script>
+
+	<script>
+
+		( function scriptInit( doc ) {
+
+			var currentIndex = 0; //  当前标签
+			var currentRight = 0; //  当前标签的右侧的定位
+			var currentWidth = 0; //  当前标签宽度
+			var _items = doc.querySelectorAll( '.tab>div' ); //  所有标签
+			var _mark = doc.querySelector( '.mark' ); //  横线
+
+			function getNextWidth( index ) {
+
+				let _ele = _items[index];
+				return _ele.clientWidth;
+
+			}
+
+			function init(  ) {
+
+				let initWidth = getNextWidth( currentIndex );
+
+				_mark.style.left = initWidth / 2 + 'px';
+
+				currentRight = currentWidth = initWidth;
+
+			}
+
+			init();
+
+			let tm = new TimelineMax();
+			tm.pause();
+
+			Array.from( _items ).forEach( function( item, index ) {
+
+				if( currentIndex === _items.length - 1 ) { return false; }
+
+				let nextItemWidth = getNextWidth( currentIndex + 1 );
+				let markWidthTo = ( nextItemWidth + currentWidth ) / 2 + 20;
+				let markLeftTo = ( nextItemWidth / 2 ) + currentRight;
+
+				tm
+					.add(
+						TweenMax.to( _mark, 1 / 6, { width: markWidthTo } ),
+					)
+					.add(
+						TweenMax.to( _mark, 1 / 6, { width: 20, left: markLeftTo } ),
+					);
+
+				currentIndex += 1;
+				currentWidth = nextItemWidth;
+				currentRight = currentRight + nextItemWidth;
+
+			} );
+
+			var mySwiper = new Swiper ('.swiper-container', {
+				watchSlidesProgress: true,
+				on:{
+					progress: function(progress){
+						if( progress < 0 || progress > 1 ) { return false; };
+						tm.seek( progress );
+					},
+					touchEnd: function( ) {
+						doc.querySelector( '.mark' ).style.transition = 'all .3s';
+					},
+					touchStart: function( ) {
+						doc.querySelector( '.mark' ).style.transition = 'none';
+					},
+				}
+			})
+
+		} )( document );
+
+	</script>
+
+</body>
+</html>

@@ -18,3 +18,5 @@ demo存放
 
 [图片上传预览](https://ck18781145809.github.io/demo/图片上传预览/upload-preview.html)
 
+[爱奇艺app切换](https://ck18781145809.github.io/demo/爱奇艺tab/index.html)
+
