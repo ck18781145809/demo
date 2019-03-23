@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 	<title>Title</title>
-	<link rel="stylesheet" href="../swiper-4.5.0/dist/css/swiper.css">
+	<link rel="stylesheet" href="./swiper.css">
 	<style>
 		html{
 			touch-action: none;
@@ -300,14 +300,14 @@
 
 	<script type="text/javascript" src="./TweenMax.min.js"> </script>
 	<script type="text/javascript" src="./TimelineMax.min.js"></script>
-	<script src="../swiper-4.5.0/dist/js/swiper.js"></script>
+	<script type="text/javascript" src="./swiper.js"></script>
 
 	<script>
 
 		( function scriptInit( doc ) {
 
 			let currentIndex = 0; //  当前标签
-			let currentRight = 0; //  当前标签的右侧的定位
+			let currentRight = 0; //  当前标签右边距离父元素左边的距离
 			let currentWidth = 0; //  当前标签宽度
 			let _items = doc.querySelectorAll( 'nav .swiper-slide' ); //  所有导航栏目
 			let _mark = doc.querySelector( '.mark' ); //  .active横线
