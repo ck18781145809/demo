@@ -4,17 +4,37 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
 	<title>Title</title>
+	<link rel="stylesheet" href="../swiper-4.5.0/dist/css/swiper.css">
 	<style>
-		.tab{
-			position: relative;
-			display: flex;
+		html{
+			touch-action: none;
 		}
 
-			.tab > div{
-				padding: 0 20px;
+		html, body{
+			margin: 0;
+			min-height: 100%;
+		}
+
+		hr{
+			border: none;
+			border-bottom: 1px solid #e6e6e6;
+		}
+
+		nav{
+			width: 100%;
+			margin: 20px 0;
+		}
+
+			nav > .swiper-wrapper{
+				position: relative;
 			}
 
-			.tab > .mark{
+			nav div.swiper-slide{
+				width: auto;
+				padding: 0 15px;
+			}
+
+			nav .mark{
 				content: '';
 				display: block;
 				position: absolute;
@@ -26,107 +46,426 @@
 				background: #1E88A8;
 			}
 
-		.swiper-container {
-			margin-top: 40px;
+			nav::after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+		main {
 			width: 100%;
-			height: 500px;
+			margin-top: 20px;
 		}
 
+			main .main-content{
+				padding: 0 20px;
+			}
+
+				.popular{
+					margin-top: 10px;
+				}
+
+				.recommend{
+					display: flex;
+					justify-content: space-between;
+					margin-top: 30px;
+				}
+
+					.recommend-item{
+						width: 45%;
+					}
+
+				.img{
+					display: block;
+					padding-bottom: 56.25%;
+					background-color: #eee;
+					border-radius: 4px;
+				}
+
+				p{
+					height: 12px;
+					margin: 10px 0;
+					background-color: #eee;
+					border-radius: 10px;
+				}
+
 	</style>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.css">
 </head>
 <body>
 
-	<section class="tab">
-		<div>电影</div>
-		<div>电视剧</div>
-		<div>本地生活</div>
-		<div>体育</div>
-		<span class="mark"></span>
-	</section>
-
-	<section class="swiper-container">
+	<nav>
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">电影</div>
-			<div class="swiper-slide">电视剧</div>
-			<div class="swiper-slide">本地生活</div>
-			<div class="swiper-slide">体育</div>
+			<div class="swiper-slide" data-theme-bg="#58C9B9" data-theme-font="#519D9E">电影</div>
+			<div class="swiper-slide" data-theme-bg="#F17F42" data-theme-font="#FFEEE4">电视剧</div>
+			<div class="swiper-slide" data-theme-bg="#E0E3DA" data-theme-font="#A593E0">本地生活</div>
+			<div class="swiper-slide" data-theme-bg="#EE7785" data-theme-font="#84B1ED">体育</div>
+			<div class="swiper-slide" data-theme-bg="#8283a7" data-theme-font="#404146">动漫</div>
+			<div class="swiper-slide" data-theme-bg="#60c5ba" data-theme-font="#a5dff9">少儿</div>
+			<span class="mark"></span>
 		</div>
-	</section>
+	</nav>
+
+	<hr>
+
+	<main>
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">
+				<div class="main-content">
+
+					<div class="popular">
+						<div class="img"></div>
+						<p></p>
+						<p></p>
+					</div>
+
+					<div class="recommend">
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="main-content">
+
+					<div class="popular">
+						<div class="img"></div>
+						<p></p>
+						<p></p>
+					</div>
+
+					<div class="recommend">
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="main-content">
+
+					<div class="popular">
+						<div class="img"></div>
+						<p></p>
+						<p></p>
+					</div>
+
+					<div class="recommend">
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="main-content">
+
+					<div class="popular">
+						<div class="img"></div>
+						<p></p>
+						<p></p>
+					</div>
+
+					<div class="recommend">
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="main-content">
+
+					<div class="popular">
+						<div class="img"></div>
+						<p></p>
+						<p></p>
+					</div>
+
+					<div class="recommend">
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="swiper-slide">
+				<div class="main-content">
+
+					<div class="popular">
+						<div class="img"></div>
+						<p></p>
+						<p></p>
+					</div>
+
+					<div class="recommend">
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+						<div class="recommend-item">
+
+							<div class="img"></div>
+							<p></p>
+							<p></p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</main>
 
 	<script type="text/javascript" src="./TweenMax.min.js"> </script>
 	<script type="text/javascript" src="./TimelineMax.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.js"></script>
+	<script src="../swiper-4.5.0/dist/js/swiper.js"></script>
 
 	<script>
 
 		( function scriptInit( doc ) {
 
-			var currentIndex = 0; //  当前标签
-			var currentRight = 0; //  当前标签的右侧的定位
-			var currentWidth = 0; //  当前标签宽度
-			var _items = doc.querySelectorAll( '.tab>div' ); //  所有标签
-			var _mark = doc.querySelector( '.mark' ); //  横线
+			let currentIndex = 0; //  当前标签
+			let currentRight = 0; //  当前标签的右侧的定位
+			let currentWidth = 0; //  当前标签宽度
+			let _items = doc.querySelectorAll( 'nav .swiper-slide' ); //  所有导航栏目
+			let _mark = doc.querySelector( '.mark' ); //  .active横线
+			let themeBackgroundColor = []; //  主题背景色
+			let themeFontColor = []; //  主题导航文字颜色
 
-			function getNextWidth( index ) {
+			/**
+			 * 获取所有导航栏目元素上的主题颜色信息
+			 * @description：data-theme-bg：背景色 data-theme-font：导航文字颜色
+			 */
+			function getThemeColors( ) {
 
-				let _ele = _items[index];
-				return _ele.clientWidth;
+				Array
+					.from( _items )
+					.forEach( function( item ) {
+
+						themeBackgroundColor.push( item.dataset.themeBg );
+						themeFontColor.push( item.dataset.themeFont );
+
+					} )
 
 			}
 
+			/**
+			 * 获取导航栏目元素宽度
+			 * @param index：Number 导航栏目元素索引
+			 * @returns { number } 元素宽度
+			 */
+			function getNavItemWidth( index ) {
+				return _items[index].clientWidth;
+			}
+
+			/**
+			 * 创建Timeline对象
+			 * @description：控制.mark移动路径
+			 * @returns { object } TimelineMax实例
+			 */
+			function createTimeLine(  ) {
+
+				let tm = new TimelineMax();
+					tm.pause();
+
+				Array
+					.from( _items )
+					.forEach( function( item, index ) {
+
+						if( currentIndex === _items.length - 1 ) { return false; }
+
+						let nextItemWidth = getNavItemWidth( currentIndex + 1 );
+						let markWidthTo = ( nextItemWidth + currentWidth ) / 2 + 20;
+						let markLeftTo = ( nextItemWidth / 2 ) + currentRight;
+
+						tm
+							.add(
+								[
+									TweenMax.to( _mark, 1 / 10, { width: markWidthTo, backgroundColor: themeFontColor[index] } ),
+									TweenMax.to( _items[index], 1 / 10, { color: '#404146' } ),
+									TweenMax.to( 'html', 1 / 10, { backgroundColor: themeBackgroundColor[index] } ),
+								]
+							)
+							.add(
+								[
+									TweenMax.to( _mark, 1 / 10, { width: 20, left: markLeftTo, backgroundColor: themeFontColor[index+1] } ),
+									TweenMax.to( _items[index+1], 1 / 10, { color: themeFontColor[index+1] } ),
+									TweenMax.to( 'html', 1 / 10, { backgroundColor: themeBackgroundColor[index+1] } ),
+								]
+							);
+
+						currentIndex += 1;
+						currentWidth = nextItemWidth;
+						currentRight = currentRight + nextItemWidth;
+
+					} );
+
+				return tm;
+
+			}
+
+			/**
+			 * 创建Swiper
+			 * @param tm：Object 控制.mark的TimelineMax实例
+			 * @returns { object } 总控swiper实例
+			 */
+			function createSwipers( tm ) {
+
+				let tabSwiper = new Swiper ( 'nav', {
+					slidesPerView: 'auto',
+					spaceBetween: 0,
+					freeModeMomentum: false,
+					freeMode: true,
+				} );
+
+				let mySwiper = new Swiper ( 'main', {
+					watchSlidesProgress: true,
+					on: {
+						progress: function(progress){
+							if( progress < 0 || progress > 1 ) { return false; };
+							tm.seek( progress );
+						},
+						touchEnd: function( ) {
+							doc.querySelector( '.mark' ).style.transition = 'all .3s';
+						},
+						touchStart: function( ) {
+							doc.querySelector( '.mark' ).style.transition = 'none';
+						},
+						transitionStart: function( ) {
+							tabSwiper.slideTo( this.realIndex );
+						}
+					}
+				} );
+				
+				return mySwiper;
+
+			}
+
+			/**
+			 * 导航栏点击事件处理
+			 * @param mySwiper：Object 总控swiper实例
+			 */
+			function eventHandler( mySwiper ) {
+
+				Array
+					.from( _items )
+					.forEach( function( item, index ) {
+						item.addEventListener( 'click', function( ) {
+							mySwiper.slideTo( index );
+						} )
+					} )
+
+			}
+
+			/**
+			 * 初始化
+			 */
 			function init(  ) {
 
-				let initWidth = getNextWidth( currentIndex );
+				getThemeColors();
 
+				/* 初始化.mark位置 */
+				let initWidth = getNavItemWidth( currentIndex );
 				_mark.style.left = initWidth / 2 + 'px';
 
+				/* 初始化页面主题 */
+				_mark.style.backgroundColor = themeFontColor[0];
+				_items[0].style.color =  themeFontColor[0];
+				document.documentElement.style.backgroundColor = themeBackgroundColor[0];
+
 				currentRight = currentWidth = initWidth;
+
+				let tm = createTimeLine();
+
+				let ms = createSwipers( tm );
+				
+				eventHandler( ms );
 
 			}
 
 			init();
-
-			let tm = new TimelineMax();
-			tm.pause();
-
-			Array.from( _items ).forEach( function( item, index ) {
-
-				if( currentIndex === _items.length - 1 ) { return false; }
-
-				let nextItemWidth = getNextWidth( currentIndex + 1 );
-				let markWidthTo = ( nextItemWidth + currentWidth ) / 2 + 20;
-				let markLeftTo = ( nextItemWidth / 2 ) + currentRight;
-
-				tm
-					.add(
-						TweenMax.to( _mark, 1 / 6, { width: markWidthTo } ),
-					)
-					.add(
-						TweenMax.to( _mark, 1 / 6, { width: 20, left: markLeftTo } ),
-					);
-
-				currentIndex += 1;
-				currentWidth = nextItemWidth;
-				currentRight = currentRight + nextItemWidth;
-
-			} );
-
-			var mySwiper = new Swiper ('.swiper-container', {
-				watchSlidesProgress: true,
-				on:{
-					progress: function(progress){
-						if( progress < 0 || progress > 1 ) { return false; };
-						tm.seek( progress );
-					},
-					touchEnd: function( ) {
-						doc.querySelector( '.mark' ).style.transition = 'all .3s';
-					},
-					touchStart: function( ) {
-						doc.querySelector( '.mark' ).style.transition = 'none';
-					},
-				}
-			})
 
 		} )( document );
 
