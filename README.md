@@ -1,5 +1,5 @@
 # demo
-只是想试一试
+自己写的一些小东西
 
 [仿即刻app时间选择](https://ck18781145809.github.io/demo/仿即刻app时间选择/test.html)
 ![](https://ck18781145809.github.io/demo/readme-img/datePicker.png)
