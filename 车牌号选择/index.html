@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<style lang="scss">
+		.select-keyboard {
+			position: relative;
+		}
+
+			.keyboard {
+				position: absolute;
+				top: 50px;
+				z-index: 2;
+				display: none;
+				width: 500px;
+				padding: 15px;
+				border: 1px solid #dfe6e9;
+				background: #fff;
+				box-shadow: 2px 2px 10px #b2bec3;
+			}
+
+				.keyboard-item {
+					position: relative;
+					overflow: hidden;
+					padding: 10px 0;
+					text-align: right;
+				}
+
+				.keyboard-item:not(:last-of-type) {
+					border-bottom: 1px solid #dfe6e9;
+				}
+
+					.keyboard-item span {
+						float: left;
+						width: 35px;
+						height: 35px;
+						margin: 5px;
+						font-size: 17px;
+						line-height: 35px;
+						color: #636e72;
+						text-align: center;
+						border: 1px solid currentColor;
+						background: #fff;
+						cursor: pointer;
+						box-sizing: border-box;
+						user-select: none;
+						transition: all .3s;
+					}
+
+					.keyboard-item.disabled span {
+						color: #b2bec3;
+						border: 1px dashed currentColor;
+						cursor: not-allowed;
+					}
+
+					.keyboard-item--cn.disabled span,
+					.keyboard-item--letter.disabled span,
+					.keyboard-item--num.disabled span {
+						color: #b2bec3;
+						border: 1px dashed currentColor;
+						cursor: not-allowed;
+					}
+
+					.keyboard-item--cn:not(.disabled) span:hover,
+					.keyboard-item--letter:not(.disabled) span:hover,
+					.keyboard-item--num:not(.disabled) span:hover {
+						color: #fff;
+						background: #74b9ff;
+						border-color: #74b9ff;
+						box-shadow: 3px 3px 3px #0984e3;
+					}
+
+					.select-keyboard .keyboard-item button {
+						display: inline-block;
+						width: 100px;
+						margin-left: 10px;
+						padding: 9px 15px;
+						font-size: 14px;
+						line-height: 20px;
+						color: #fff;
+						text-align: center;
+						border-radius: 4px;
+						transition: border-color .15s,background-color .15s,opacity .15s;
+						cursor: pointer;
+					}
+
+					.select-keyboard .keyboard-item .delete {
+						border: 1px solid #ff7675;
+						background-color: #ff7675;
+					}
+
+					.select-keyboard .keyboard-item .delete:hover {
+						border-color: #d63031;
+						background-color: #d63031;
+					}
+
+					.select-keyboard .keyboard-item .cancel {
+						border: 1px solid #74b9ff;
+						background-color: #74b9ff;
+					}
+
+					.select-keyboard .keyboard-item .cancel:hover {
+						border-color: #0984e3;
+						background-color: #0984e3;
+					}
+
+					.keyboard-item-num.disabled span {
+						color: #b2bec3;
+						border: 1px dashed currentColor;
+						cursor: not-allowed;
+					}
+	</style>
+	<title>Title</title>
+</head>
+<body>
+	<div class="input select-keyboard">
+		<input id="keyboardNum" class="keyboardNum" type="text" placeholder="请填写车牌号" autocomplete="false" readonly>
+		<div class="keyboard" id="keyboard">
+			<div class="keyboard-item keyboard-item--cn first" id="first">
+				<span>京</span><span>津</span><span>沪</span><span>渝</span><span>冀</span><span>晋</span>
+				<span>辽</span><span>吉</span><span>黑</span><span>苏</span><span>浙</span><span>皖</span>
+				<span>闽</span><span>赣</span><span>鲁</span><span>豫</span><span>鄂</span><span>湘</span>
+				<span>粤</span><span>琼</span><span>川</span><span>贵</span><span>云</span><span>陕</span>
+				<span>甘</span><span>青</span><span>蒙</span><span>桂</span><span>藏</span><span>宁</span>
+				<span>新</span>
+			</div>
+			<div class="keyboard-item other disabled" id="other">
+				<label class="keyboard-item--letter">
+					<span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span><span>I</span>
+					<span>J</span><span>K</span><span>L</span><span>M</span><span>N</span><span>O</span><span>P</span><span>Q</span><span>R</span>
+					<span>S</span><span>T</span><span>U</span><span>V</span><span>W</span><span>X</span><span>Y</span><span>Z</span>
+				</label>
+				<label class="keyboard-item--num disabled">
+					<span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+				</label>
+			</div>
+			<div class="keyboard-item">
+				<button class="delete" type="button">删除</button><button class="cancel" type="button">确定</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.js"></script>
+	<script>
+		function numberKeyboardHandler() {
+			// 显示键盘
+			$('.select-keyboard .keyboardNum').on('focus', function () {
+				$(this)
+					.siblings('.keyboard')
+					.show();
+
+				let plateARR = $(this)
+					.closest('.select-keyboard')
+					.find('.keyboardNum')
+					.val()
+					.split('');
+
+				arrLen(
+					$(this)
+						.closest('.select-keyboard')
+						.find('.other')
+					, plateARR
+				);
+			});
+
+
+			// 关闭键盘
+			$('.keyboard .cancel').on('click', function () {
+				$(this)
+					.closest('.keyboard')
+					.hide();
+			});
+
+
+			// 选择车牌号第一位
+			$('.keyboard .first span').on('click', function () {
+				let plateARR = $(this)
+					.closest('.select-keyboard')
+					.find('.keyboardNum')
+					.val()
+					.split('');
+
+				plateARR[0] = $(this).text();
+
+				appendResult(
+					$(this)
+						.closest('.select-keyboard')
+						.find('.keyboardNum')
+					, plateARR
+				);
+				arrLen(
+					$(this)
+						.closest('.select-keyboard')
+						.find('.other')
+					, plateARR
+				);
+			});
+
+
+			// 选择车牌号后五位
+			$('.keyboard .other span').on('click', function () {
+				const IS_OTHER_OFF = $(this)
+					.closest('.keyboard-item')
+					.is('.disabled');
+
+				let plateARR = $(this)
+					.closest('.select-keyboard')
+					.find('.keyboardNum')
+					.val()
+					.split('');
+
+				if(plateARR.length === 1) {
+					$(this)
+						.closest('.keyboard')
+						.find('.keyboard-item--num')
+						.removeClass('disabled');
+				}
+
+				if (!IS_OTHER_OFF) {
+					if(plateARR.length === 6) {
+						$('.keyboard-item--cn').addClass('disabled');
+						$('.keyboard-item--letter').addClass('disabled');
+						$('.keyboard-item--num').addClass('disabled');
+					}
+
+					if(plateARR.length < 7) {
+						plateARR.push($(this).text());
+						appendResult(
+							$(this)
+								.closest('.select-keyboard')
+								.find('.keyboardNum')
+							, plateARR
+						);
+					} else {
+						console.log('已经超过最大位数');
+					}
+				}
+			});
+
+
+			// 删除车牌号
+			$('.keyboard .delete').on('click', function () {
+				let plateARR = $(this)
+					.closest('.select-keyboard')
+					.find('.keyboardNum')
+					.val()
+					.split('');
+
+				plateARR.pop();
+
+				if(plateARR.length === 1) {
+					$(this)
+						.closest('.keyboard')
+						.find('.keyboard-item--num')
+						.addClass('disabled');
+				}
+
+				if(plateARR.length < 7) {
+					$('.keyboard-item--cn').removeClass('disabled');
+					$('.keyboard-item--letter').removeClass('disabled');
+					$('.keyboard-item--num').removeClass('disabled');
+				}
+
+				appendResult(
+					$(this)
+						.closest('.select-keyboard')
+						.find('.keyboardNum')
+					, plateARR
+				);
+				arrLen(
+					$(this)
+						.closest('.select-keyboard')
+						.find('.other')
+					, plateARR
+				);
+			});
+
+
+			// 输入数组
+			function appendResult(resultInput, arr) {
+				resultInput.val(arr.join(''));
+			}
+
+
+			// 判断数组长度
+			function arrLen(other, arr) {
+				if(arr.length === 0) {
+					other.addClass('disabled');
+					onOff = true;
+				} else {
+					other.removeClass('disabled');
+					onOff = false;
+				}
+			}
+		}
+
+		numberKeyboardHandler()
+	</script>
+</body>
+</html>
